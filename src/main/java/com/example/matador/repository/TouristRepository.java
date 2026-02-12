@@ -6,6 +6,7 @@ import org.springframework.stereotype.Repository;
 
 import java.util.*;
 
+@Repository
 public class TouristRepository {
 
     private final List<TouristAttraction> touristAttractions = new ArrayList<>();

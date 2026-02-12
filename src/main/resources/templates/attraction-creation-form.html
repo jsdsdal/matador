@@ -7,7 +7,7 @@
 <body>
 
 <h1>Registrer ny turistattraktion</h1>
-<form action="#" th:action="@{/attractions/add}" th:object="${touristattraction}" method="post">
+<form action="#" th:action="@{/attractions/add}" th:object="${TouristAttraction}" method="post">
     <label>Navn</label>
     <input type="text" th:field="*{name}">
     <br>
