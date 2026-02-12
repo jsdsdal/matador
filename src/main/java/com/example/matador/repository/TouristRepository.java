@@ -2,6 +2,7 @@ package com.example.matador.repository;
 
 import com.example.matador.model.Tags;
 import com.example.matador.model.TouristAttraction;
+import org.springframework.stereotype.Repository;
 
 import java.util.*;
 
@@ -16,6 +17,10 @@ public class TouristRepository {
         touristAttractions.add(new TouristAttraction("Tivoli", "Forlystelsespark", "Nørrebrø", List.of()));
         touristAttractions.add(new TouristAttraction("Den Lille Havfrue", "Seværdighed", "Nørrebrø", List.of()));
         touristAttractions.add(new TouristAttraction("Rundetårn", "Kulturarv", "Nørrebrø", List.of()));
+    }
+
+    public TouristRepository() {
+        populateTouristAttractions();
     }
 
     // getter

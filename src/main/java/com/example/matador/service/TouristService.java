@@ -2,9 +2,10 @@ package com.example.matador.service;
 
 import com.example.matador.model.TouristAttraction;
 import com.example.matador.repository.TouristRepository;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
-
+@Service
 public class TouristService {
 
     private final TouristRepository repository;
