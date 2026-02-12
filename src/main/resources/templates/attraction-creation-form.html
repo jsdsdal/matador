@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Creation Form</title>
+</head>
+<body>
+
+<h1>Registrer ny turistattraktion</h1>
+<form action="#" th:action="@{/attractions/add}" th:object="${TouristAttraction}" method="post">
+    <label>Navn</label>
+    <input type="text" th:field="*{name}">
+    <br>
+    <label>Beskrivelse</label>
+    <input type="text" th:field="*{description}">
+    <br>
+    <label>Lokation</label>
+    <input type="text" th:field="*{location}">
+    <br>
+    <select th:field="*{tags}" multiple>
+        <option th:each="tags: ${tags}" th:value="${tags}" th:text="${tags}"></option>
+    </select>
+    <br>
+    <button type="submit">Registrer</button>
+
+
+
+</form>
+</body>
+</html>
