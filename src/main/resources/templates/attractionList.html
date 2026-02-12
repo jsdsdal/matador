@@ -10,11 +10,13 @@
 <table>
     <tr th:if="${touristAttractions.isEmpty()}">Ingen registrerede Tourist Attraktioner</tr>
     <tr th:unless="${touristAttractions.isEmpty()}">
-        <th>Navn</th> <th>Beskrivelse</th>
+        <th>Navn</th> <th>Beskrivelse</th> <th>Tags</th>
     </tr>
     <tr th:each="t: ${touristAttractions}">
         <td th:text="${t.name}"></td>
         <td th:text="${t.description}"></td>
+        <td th:text="${t.getLocation()}"></td>
+        <td th:text="${t.getTags()}"></td>
         <td><button><a th:href="@{/attractions/edit/{name}(name=${t.name})}">Opdater</a></button></td>
     </tr>
 </table>
