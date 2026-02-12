@@ -62,8 +62,8 @@ public class TouristRepository {
         return deletedAttraction;
     }
 
-    // hent cities fra hardkodet liste i repository
-    public List<String> getCities() {
+    // hent locations fra hardkodet liste i repository
+    public List<String> getLocations() {
         return null;
     }
 
