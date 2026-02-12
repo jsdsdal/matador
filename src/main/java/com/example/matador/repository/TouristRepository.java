@@ -2,9 +2,11 @@ package com.example.matador.repository;
 
 import com.example.matador.model.Tags;
 import com.example.matador.model.TouristAttraction;
+import org.springframework.stereotype.Repository;
 
 import java.util.*;
 
+@Repository
 public class TouristRepository {
 
     private final List<TouristAttraction> touristAttractions = new ArrayList<>();
@@ -16,6 +18,10 @@ public class TouristRepository {
         touristAttractions.add(new TouristAttraction("Tivoli", "Forlystelsespark", "Nørrebrø", List.of()));
         touristAttractions.add(new TouristAttraction("Den Lille Havfrue", "Seværdighed", "Nørrebrø", List.of()));
         touristAttractions.add(new TouristAttraction("Rundetårn", "Kulturarv", "Nørrebrø", List.of()));
+    }
+
+    public TouristRepository() {
+        populateTouristAttractions();
     }
 
     // getter
