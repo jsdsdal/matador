@@ -11,10 +11,10 @@
 body {
     max-width: 500px;
     margin: auto;
-    padding: 10px;
+    padding: 5px;
 
     background: var(--sitewhite);
-    color: var(--mustardyellow);
+    color: var(--textblack);
     font-family: "Roboto Light", sans-serif;
 }
 
@@ -22,18 +22,15 @@ h1 {
     font-family: "Roboto Light", sans-serif;
     font-size: 1.5em;
 }
-
+label {
+    width: 150px;
+    display: inline-block;
+}
 
 table, th, td {
     border: 2px solid black;
     border-collapse: collapse;
-    padding: 5px;
-}
-
-
-label {
-    width: 150px;
-    display: inline-block;
+    padding: 10px;
 }
 
 th {
