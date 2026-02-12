@@ -50,4 +50,29 @@ public class TouristController {
             return new ResponseEntity<>(touristAttraction, HttpStatus.OK);
         }
     }
+
+    @GetMapping("/{name}/edit")
+    public String getUpdateAttraction(@PathVariable("name") String attraction, Model model) {
+        TouristAttraction myAttraction = service.getTouristAttractionByName(attraction);
+        model.addAttribute("attraction", myAttraction);
+        return "updateAttraction";
+    }
+
+    @PostMapping("/{name}/edit")
+    public String updateAttraction(@PathVariable("name") String name, @ModelAttribute TouristAttraction updatedTouristAttraction) {
+        var description = updatedTouristAttraction.getDescription();
+        service.updateTouristAttractionDescription(updatedTouristAttraction, description);
+//        String description = myAttraction.getDescription();
+//        String location = myAttraction.getLocation();
+//        List<Tags> tags = myAttraction.getTags();
+//        for (TouristAttraction element : service.getTouristAttractions()) {
+//            if (element.getName().equalsIgnoreCase(myAttraction.getName())) {
+//                element.setDescription(description);
+//                element.setLocation(location);
+//                element.setTags(tags);
+//            }
+//        }
+        return "redirect:/attractions";
+    }
 }
+

@@ -48,9 +48,9 @@ public class TouristRepository {
     }
 
     // opdaterer beskrivelse
-    public void updateTouristAttractionDescription (TouristAttraction touristAttraction, String description) {
+    public void updateTouristAttractionDescription (TouristAttraction attraction, String description) {
         if (description != null) {
-            touristAttraction.setName(description);
+            attraction.setDescription(description);
         }
     }
 

@@ -15,9 +15,7 @@
     <tr th:each="t: ${touristAttractions}">
         <td th:text="${t.name}"></td>
         <td th:text="${t.description}"></td>
-<!--        <td><button><a th:action="@{}">Opdater</a></button></td>-->
-<!--        <form th:action="@{/user/{id}(id=${user.id})}" method="post">-->
-
+        <td><button><a th:href="@{/{name}/edit(name=${t.name})}">Opdater</a></button></td>
     </tr>
 </table>
 
