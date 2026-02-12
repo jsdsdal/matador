@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Turistattraktioner</title>
+</head>
+<body>
+<h1>Turistattraktioner</h1>
+
+<table>
+    <tr th:if="${touristAttractions.isEmpty()}">Ingen registrerede Tourist Attraktioner</tr>
+    <tr th:unless="${touristAttractions.isEmpty()}">
+        <th>Navn</th> <th>Beskrivelse</th>
+    </tr>
+    <tr th:each="t: ${touristAttractions}">
+        <td th:text="${t.name}"></td>
+        <td th:text="${t.description}"></td>
+    </tr>
+</table>
+
+</body>
+</html>
