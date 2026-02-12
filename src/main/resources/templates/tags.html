@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org" lang="en" >
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
 </head>
 <body>
-<h1>th:text="${attraction.getName()}"</h1>
+<h1>th:field="*{name}"</h1>
 <table>
     <tr th:if="${.isEmpty()}">There are no users registered yet</tr>
     <tr th:if="${!users.isEmpty()}">

@@ -10,12 +10,16 @@
 <table>
     <tr th:if="${touristAttractions.isEmpty()}">Ingen registrerede Tourist Attraktioner</tr>
     <tr th:unless="${touristAttractions.isEmpty()}">
-        <th>Navn</th> <th>Beskrivelse</th>
+        <th>Navn</th> <th>Beskrivelse</th><th></th>
     </tr>
-    <tr th:each="t: ${touristAttractions}">
+
+    <input type=hidden th:field="*{name}"/>
+    <tr th:each="t: ${tags}">
         <td th:text="${t.name}"></td>
         <td th:text="${t.description}"></td>
+        <td><button><a th:href="@{/{name}/tags}">Tags</a></button></td>
     </tr>
+
 </table>
 
 </body>
