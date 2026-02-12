@@ -1,15 +1,17 @@
 package com.example.matador.repository;
 
+import com.example.matador.model.Tags;
 import com.example.matador.model.TouristAttraction;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 public class TouristRepository {
 
     private final List<TouristAttraction> touristAttractions = new ArrayList<>();
 
-    // tilføjer alle attraktioner til listen
+    /**
+     * Tilføjer hardcoded turist attraktioner for test
+     */
     public void populateTouristAttractions() {
         touristAttractions.add(new TouristAttraction("Tivoli", "Forlystelsespark", "Nørrebrø", List.of()));
         touristAttractions.add(new TouristAttraction("Den Lille Havfrue", "Seværdighed", "Nørrebrø", List.of()));
@@ -62,14 +64,29 @@ public class TouristRepository {
         return deletedAttraction;
     }
 
-    // hent locations fra hardkodet liste i repository
-    public List<String> getLocations() {
-        return null;
+
+    /**
+     * Denne metoder opretter et TreeSet med
+     * alle vores nuværende lokationer i touristAttractions
+     * listen.
+     * @return <b>Locations</b>
+     */
+    public Set<String> getLocations() {
+        Set<String> locations = new TreeSet<>();
+        for (TouristAttraction element : touristAttractions) {
+            var locationItem = element.getLocation();
+            locations.add(locationItem);
+        }
+        return locations;
     }
 
-    // hent tags hardkodet liste i repository
-    public List<String> getTags() {
-        return null;
-
+    /**
+     * Opretter en liste af vores eksisterende Tags
+     * og returnerer dem
+     * @return allEnums
+     */
+    public List<Tags> getTags() {
+        List<Tags> allEnums = new ArrayList<>(EnumSet.allOf(Tags.class));
+        return allEnums;
     }
 }
