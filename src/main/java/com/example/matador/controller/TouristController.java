@@ -9,6 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Arrays;
 import java.util.List;
 @Controller
 public class TouristController {
@@ -30,7 +31,7 @@ public class TouristController {
     public String showTouristAttractionCreationForm(Model model){
         TouristAttraction touristAttraction = new TouristAttraction();
         model.addAttribute("TouristAttraction", touristAttraction);
-        model.addAttribute("tags", Tags.values());
+        model.addAttribute("allTags",Tags.values());
         return "attraction-creation-form";
     }
 
