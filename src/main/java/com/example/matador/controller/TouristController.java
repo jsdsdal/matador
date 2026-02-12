@@ -5,8 +5,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-import static jdk.internal.org.jline.reader.impl.LineReaderImpl.CompletionType.List;
+import java.util.List;
 
+import static jdk.internal.org.jline.reader.impl.LineReaderImpl.CompletionType.List;
 
 public class TouristController {
 
@@ -17,8 +18,11 @@ public class TouristController {
     }
 
     @GetMapping("/{name}/tags")
-    public String getTagsForTouristAttraction(Model model){
-        model.addAttribute("tags", )
+    public String getTagsForTouristAttraction(Model model, String name){
+
+        TouristAttraction attraction = service.getTouristAttractionByName(name);
+        List<Tags> userTags = attraction.getTags();
+        model.addAttribute("tags", userTags);
 
         return "tags";
     }
