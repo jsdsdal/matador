@@ -1,15 +1,15 @@
 package com.example.matador.controller;
 
+import com.example.matador.model.Tags;
 import com.example.matador.model.TouristAttraction;
 import com.example.matador.service.TouristService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+
 
 public class TouristController {
 
@@ -34,10 +34,18 @@ public class TouristController {
         }
     }
 
-    @PostMapping("add")
-    public ResponseEntity<TouristAttraction> addTouristAttraction(@RequestBody TouristAttraction touristAttraction){
-        TouristAttraction addedTouristAttraction = service.addTouristAttraction(touristAttraction);
-        return ResponseEntity.ok(touristAttraction);
+    @GetMapping("/attractions/add")
+    public String showTouristAttractionCreationForm(Model model){
+        TouristAttraction touristAttraction = new TouristAttraction();
+        model.addAttribute("TouristAttraction", touristAttraction);
+        model.addAttribute("tags", Tags.values());
+        return "attraction-creation-form";
+    }
+
+    @PostMapping("/attractions/add")
+    public String register(@ModelAttribute TouristAttraction touristAttraction) {
+        service.addTouristAttraction(touristAttraction);
+        return "redirect:/attractions";
     }
 
     @PostMapping("{name}")

@@ -19,6 +19,8 @@ public class TouristAttraction {
         this.tags = tags;
     }
 
+    public TouristAttraction() {}
+
     public String getName() { return name; }
     public String getDescription() { return description; }
     public String getLocation() { return  location; }
@@ -26,7 +28,10 @@ public class TouristAttraction {
 
     public void setName(String name) { this.name = name; }
     public void setDescription(String description) { this.description = description; }
-    public void setLocation(String Location) { this.location = location; }
+    public void setLocation(String location) { this.location = this.location; }
+    public void setTags(List<Tags> tags) {
+        this.tags = tags;
+    }
 
     // tilføj tag
     public void addTags(Tags tag) { tags.add(tag); }
