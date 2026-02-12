@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Turistattraktioner</title>
+    <link th:href="@{/css/main.css}" rel="stylesheet">
 </head>
 <body>
 <h1>Turistattraktioner</h1>
@@ -18,6 +19,7 @@
         <td th:text="${t.getLocation()}"></td>
         <td th:text="${t.getTags()}"></td>
         <td><button><a th:href="@{/attractions/edit/{name}(name=${t.name})}">Opdater</a></button></td>
+        <td><button><a th:href="@{/{name}/tags(name=${t.name})}">Tags</a></button></td>
     </tr>
 </table>
 

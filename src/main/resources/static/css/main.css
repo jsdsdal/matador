@@ -1,0 +1,94 @@
+:root {
+    --bordeaux: #59221A;
+    --matadorred: #D84051;
+    --skyblue: #8BC1D1;
+    --moneygreen: #358A69;
+    --mustardyellow: #D1A15B;
+    --sitewhite: #FAFDF6;
+    --textblack: #2D1D1D;
+}
+
+body {
+    max-width: 500px;
+    margin: auto;
+    padding: 5px;
+
+    background: var(--sitewhite);
+    color: var(--textblack);
+    font-family: "Roboto Light", sans-serif;
+}
+
+h1 {
+    font-family: "Roboto Light", sans-serif;
+    font-size: 1.5em;
+}
+label {
+    width: 150px;
+    display: inline-block;
+}
+
+table, th, td {
+    border: 2px solid black;
+    border-collapse: collapse;
+    padding: 10px;
+}
+
+th {
+    text-align: left;
+}
+
+
+/* Kan vi gøre det her logo mindre! */
+/*
+.logo {
+    width: 4rem;
+}
+
+.logo-title{
+    display: flex;
+    justify-content: space-between;
+
+}
+
+#nav-title {
+    text-decoration: none;
+
+}
+
+.navbar {
+    background-color: var(--moneygreen);
+    color: var(--sitewhite);
+    display: flex;
+    padding: 10px 10px;
+    margin: 0 auto;
+    justify-content: space-between;
+    align-items: center;
+}
+.menu {
+    display: flex;
+    list-style-type: none;
+    color: var(--sitewhite);
+}
+.item a {
+    color: var(--sitewhite);
+    text-decoration: none;
+}
+.item :hover {
+    color: var(--skyblue);
+    transition: color 0.3s ease;
+}
+li {
+    margin: 0 15px;
+}
+
+a {
+    text-decoration: none;
+}
+
+select, input[type="text"], input[type="number"]{
+    width:200px;
+    box-sizing:border-box;
+}
+
+ */
+

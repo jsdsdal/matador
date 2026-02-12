@@ -1,7 +1,7 @@
 package com.example.matador.controller;
 
+import com.example.matador.model.Tags;
 import com.example.matador.model.TouristAttraction;
-import com.example.matador.repository.TouristRepository;
 import com.example.matador.service.TouristService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -15,8 +15,7 @@ import java.util.List;
 public class TouristController {
 
     private final TouristService service;
-
-    public TouristController(TouristService service, TouristRepository touristRepository) {
+    public TouristController(TouristService service) {
         this.service = service;
     }
 

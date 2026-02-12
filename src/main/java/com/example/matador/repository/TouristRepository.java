@@ -2,10 +2,8 @@ package com.example.matador.repository;
 
 import com.example.matador.model.Tags;
 import com.example.matador.model.TouristAttraction;
-import com.example.matador.service.TouristService;
 import org.springframework.stereotype.Repository;
 
-import java.sql.Array;
 import java.util.*;
 
 @Repository
