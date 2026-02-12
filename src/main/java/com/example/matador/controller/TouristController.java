@@ -40,7 +40,6 @@ public class TouristController {
         return ResponseEntity.ok(touristAttraction);
     }
 
-
     @PostMapping("{name}")
     public ResponseEntity<TouristAttraction> deleteByName(@PathVariable String name) {
         TouristAttraction touristAttraction = service.deleteByName(name);
