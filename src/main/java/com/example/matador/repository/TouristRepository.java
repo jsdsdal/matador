@@ -15,9 +15,9 @@ public class TouristRepository {
      * Tilføjer hardcoded turist attraktioner for test
      */
     public void populateTouristAttractions() {
-        touristAttractions.add(new TouristAttraction("Tivoli", "Forlystelsespark", "Nørrebrø", List.of()));
-        touristAttractions.add(new TouristAttraction("Den Lille Havfrue", "Seværdighed", "Nørrebrø", List.of()));
-        touristAttractions.add(new TouristAttraction("Rundetårn", "Kulturarv", "Nørrebrø", List.of()));
+        touristAttractions.add(new TouristAttraction("Tivoli", "Forlystelsespark", "Nørrebrø", List.of(Tags.GRATIS)));
+        touristAttractions.add(new TouristAttraction("Den Lille Havfrue", "Seværdighed", "Nørrebrø", List.of(Tags.NATUR)));
+        touristAttractions.add(new TouristAttraction("Rundetårn", "Kulturarv", "Nørrebrø", List.of(Tags.BØRNEVENLIG, Tags.GRATIS)));
     }
 
     public TouristRepository() {

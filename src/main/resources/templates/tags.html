@@ -5,15 +5,15 @@
     <title>Title</title>
 </head>
 <body>
-<h1>th:field="*{name}"</h1>
+<h1 th:text="${name}"></h1>
 <table>
     <tr th:each="t: ${tags}">
         <td th:text="${t}"></td>
     </tr>
 
-    <button><a th:href="@{/attractions}">Tilbage</a></button>
-
 </table>
+
+<button><a th:href="@{/attractions}">Tilbage</a></button>
 
 </body>
 </html>

@@ -13,11 +13,10 @@
         <th>Navn</th> <th>Beskrivelse</th><th></th>
     </tr>
 
-    <input type=hidden th:field="*{name}"/>
-    <tr th:each="t: ${tags}">
+    <tr th:each="t: ${touristAttractions}">
         <td th:text="${t.name}"></td>
         <td th:text="${t.description}"></td>
-        <td><button><a th:href="@{/{name}/tags}">Tags</a></button></td>
+        <td><button><a th:href="@{/{name}/tags(name=${t.name})}">Tags</a></button></td>
     </tr>
 
 </table>
