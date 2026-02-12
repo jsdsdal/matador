@@ -5,6 +5,18 @@
     <title>Title</title>
 </head>
 <body>
+<h1>th:text="${attraction.getName()}"</h1>
+<table>
+    <tr th:if="${.isEmpty()}">There are no users registered yet</tr>
+    <tr th:if="${!users.isEmpty()}">
+        <th>Name</th> <th>Email</th> <th>User Role</th>
+    </tr>
+    <tr th:each="user: ${users}">
+        <td th:text="${user.name}"></td>
+        <td th:text="${user.email}"></td>
+        <td th:text="${user.userRole}"></td>
+    </tr>
+</table>
 
 </body>
 </html>
