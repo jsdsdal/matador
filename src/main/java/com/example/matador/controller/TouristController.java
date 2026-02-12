@@ -1,7 +1,7 @@
 package com.example.matador.controller;
 
-import com.example.matador.model.Tags;
 import com.example.matador.model.TouristAttraction;
+import com.example.matador.repository.TouristRepository;
 import com.example.matador.service.TouristService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -15,7 +15,8 @@ import java.util.List;
 public class TouristController {
 
     private final TouristService service;
-    public TouristController(TouristService service) {
+
+    public TouristController(TouristService service, TouristRepository touristRepository) {
         this.service = service;
     }
 
@@ -31,7 +32,7 @@ public class TouristController {
     public String showTouristAttractionCreationForm(Model model){
         TouristAttraction touristAttraction = new TouristAttraction();
         model.addAttribute("TouristAttraction", touristAttraction);
-        model.addAttribute("allTags",Tags.values());
+        model.addAttribute("allTags",service.getTags());
         return "attraction-creation-form";
     }
 
@@ -41,7 +42,7 @@ public class TouristController {
         return "redirect:/attractions";
     }
 
-    @PostMapping("{name}")
+    @PostMapping("/attractions/delete/{name}")
     public ResponseEntity<TouristAttraction> deleteByName(@PathVariable String name) {
         TouristAttraction touristAttraction = service.deleteByName(name);
         if (touristAttraction==null) {
@@ -51,27 +52,17 @@ public class TouristController {
         }
     }
 
-    @GetMapping("/{name}/edit")
+    @GetMapping("/attractions/edit/{name}")
     public String getUpdateAttraction(@PathVariable("name") String attraction, Model model) {
         TouristAttraction myAttraction = service.getTouristAttractionByName(attraction);
         model.addAttribute("attraction", myAttraction);
+        model.addAttribute("allTags", service.getTags());
         return "updateAttraction";
     }
 
-    @PostMapping("/{name}/edit")
-    public String updateAttraction(@PathVariable("name") String name, @ModelAttribute TouristAttraction updatedTouristAttraction) {
-        var description = updatedTouristAttraction.getDescription();
-        service.updateTouristAttractionDescription(updatedTouristAttraction, description);
-//        String description = myAttraction.getDescription();
-//        String location = myAttraction.getLocation();
-//        List<Tags> tags = myAttraction.getTags();
-//        for (TouristAttraction element : service.getTouristAttractions()) {
-//            if (element.getName().equalsIgnoreCase(myAttraction.getName())) {
-//                element.setDescription(description);
-//                element.setLocation(location);
-//                element.setTags(tags);
-//            }
-//        }
+    @PostMapping("/attractions/update")
+    public String updateAttraction(@ModelAttribute TouristAttraction updatedTouristAttraction) {
+        service.update(updatedTouristAttraction);
         return "redirect:/attractions";
     }
 }

@@ -6,9 +6,9 @@
 </head>
 <body>
 <h1>Registrer ny turistattraktion</h1>
-<form th:action="@{/{name}/edit}" th:object="${attraction}" method="post">
+<form th:action="@{/attractions/update}" th:object="${attraction}" method="post">
     <label>Navn</label>
-    <input type="text" th:field="*{name}">
+    <input type="text" th:field="*{name}" readonly>
     <br>
     <label>Beskrivelse</label>
     <input type="text" th:field="*{description}">
@@ -25,8 +25,6 @@
     </div>
     <br>
     <button type="submit">Registrer</button>
-
-
-
+</form>
 </body>
 </html>

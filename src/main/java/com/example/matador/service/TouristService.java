@@ -1,9 +1,12 @@
 package com.example.matador.service;
 
+import com.example.matador.model.Tags;
 import com.example.matador.model.TouristAttraction;
 import com.example.matador.repository.TouristRepository;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+import java.util.EnumSet;
 import java.util.List;
 @Service
 public class TouristService {
@@ -42,6 +45,24 @@ public class TouristService {
     public TouristAttraction deleteByName(String name){
         return repository.deleteByName(name);
     }
+
+
+    public void update(TouristAttraction updatedTouristAttraction) {
+        repository.update(updatedTouristAttraction);
+    }
+
+    /**
+     * Opretter en liste af vores eksisterende Tags
+     * og returnerer dem
+     * @return allEnums
+     */
+    public List<Tags> getTags() {
+        List<Tags> allEnums = new ArrayList<>(EnumSet.allOf(Tags.class));
+        return allEnums;
+    }
+
+
+
 
 
 }

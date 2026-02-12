@@ -15,7 +15,7 @@
     <tr th:each="t: ${touristAttractions}">
         <td th:text="${t.name}"></td>
         <td th:text="${t.description}"></td>
-        <td><button><a th:href="@{/{name}/edit(name=${t.name})}">Opdater</a></button></td>
+        <td><button><a th:href="@{/attractions/edit/{name}(name=${t.name})}">Opdater</a></button></td>
     </tr>
 </table>
 

@@ -28,7 +28,7 @@ public class TouristAttraction {
 
     public void setName(String name) { this.name = name; }
     public void setDescription(String description) { this.description = description; }
-    public void setLocation(String location) { this.location = this.location; }
+    public void setLocation(String location) { this.location = location; }
     public void setTags(List<Tags> tags) {
         this.tags = tags;
     }
