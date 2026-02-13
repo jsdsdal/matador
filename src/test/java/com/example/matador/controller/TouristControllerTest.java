@@ -70,12 +70,26 @@ class TouristControllerTest {
     }
 
     @Test
-    void register() {
+    void getTagsForTouristAttraction() throws Exception{
+
+        TouristAttraction tivoli = new TouristAttraction("Tivoli", "Forlystelsespark",
+                "Nørrebrø", List.of(Tags.BØRNEVENLIG, Tags.GRATIS));
+
+        when(service.getTouristAttractionByName("Tivoli")).thenReturn(tivoli);
+
+        mockMvc.perform(get("/Tivoli/tags"))
+                .andExpect(status().isOk())
+                .andExpect(view().name("tags"))
+                .andExpect(model().attributeExists("tags"))
+                .andExpect(model().attributeExists("name"));
+
     }
 
     @Test
-    void getTagsForTouristAttraction() {
+    void register() {
     }
+
+
 
     @Test
     void deleteByName() {
