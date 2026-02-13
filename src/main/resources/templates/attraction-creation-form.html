@@ -16,7 +16,13 @@
     <input type="text" th:field="*{description}">
     <br>
     <label>Lokation</label>
-    <input type="text" th:field="*{location}">
+    <select th:field="*{location}">
+        <option value="">-- Vælg lokation --</option>
+        <option th:each="loc : ${allLocations}"
+                th:value="${loc}"
+                th:text="${loc}">
+        </option>
+    </select>
     <br>
     <div th:each="tag : ${allTags}">
         <input type="checkbox"

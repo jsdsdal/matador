@@ -32,6 +32,7 @@ public class TouristController {
         TouristAttraction touristAttraction = new TouristAttraction();
         model.addAttribute("TouristAttraction", touristAttraction);
         model.addAttribute("allTags",service.getTags());
+        model.addAttribute("allLocations", service.getLocations());
         return "attraction-creation-form";
     }
 
