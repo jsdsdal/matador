@@ -11,7 +11,7 @@
 <table>
     <tr th:if="${touristAttractions.isEmpty()}">Ingen registrerede Tourist Attraktioner</tr>
     <tr th:unless="${touristAttractions.isEmpty()}">
-        <th>Navn</th> <th>Beskrivelse</th> <th>Tags</th>
+        <th>Navn</th> <th>Beskrivelse</th> <th>Lokation</th><th>Tags</th>
     </tr>
     <tr th:each="t: ${touristAttractions}">
         <td th:text="${t.name}"></td>
