@@ -41,6 +41,15 @@ public class TouristController {
         return "redirect:/attractions";
     }
 
+    @GetMapping("/{name}/tags")
+    public String getTagsForTouristAttraction(@PathVariable String name, Model model) {
+        TouristAttraction attraction = service.getTouristAttractionByName(name);
+        List<Tags> userTags = attraction.getTags();
+        model.addAttribute("name", name);
+        model.addAttribute("tags", userTags);
+        return "tags";
+    }
+
     @PostMapping("/attractions/delete/{name}")
     public ResponseEntity<TouristAttraction> deleteByName(@PathVariable String name) {
         TouristAttraction touristAttraction = service.deleteByName(name);
