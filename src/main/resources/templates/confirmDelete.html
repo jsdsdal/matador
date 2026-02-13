@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>confirmDelete</title>
+  <link th:href="@{/css/main.css}" rel="stylesheet">
+</head>
+<body>
+
+<h1 th:text="'Vil du slette ' + ${attractionToDelete.name} + '?'"></h1>
+
+<form action="#" th:action="@{/attractions/delete/{name}(name=${attractionToDelete.name})}" th:object="${TouristAttraction}" method="post">
+  <button type="submit">Ja</button>
+</form>
+
+<td><button><a th:href="@{/attractions}">Nej</a></button></td>
+
+</body>
+</html>
