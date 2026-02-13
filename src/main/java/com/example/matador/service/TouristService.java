@@ -8,6 +8,8 @@ import org.springframework.stereotype.Service;
 import java.util.ArrayList;
 import java.util.EnumSet;
 import java.util.List;
+import java.util.Set;
+
 @Service
 public class TouristService {
 
@@ -62,6 +64,9 @@ public class TouristService {
     }
 
 
+    public Set<String> getLocations() {
+        return repository.getLocations();
+    }
 
 
 
