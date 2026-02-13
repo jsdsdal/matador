@@ -7,6 +7,7 @@ import com.example.matador.service.TouristService;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.mockito.ArgumentCaptor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.webmvc.test.autoconfigure.WebMvcTest;
 import org.springframework.test.context.bean.override.mockito.MockitoBean;
@@ -15,11 +16,13 @@ import org.springframework.test.web.servlet.MockMvc;
 import java.util.ArrayList;
 import java.util.List;
 
+import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 
 import static org.junit.jupiter.api.Assertions.*;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
 @WebMvcTest(TouristController.class)
@@ -70,7 +73,37 @@ class TouristControllerTest {
     }
 
     @Test
-    void register() {
+    void ShouldRegisterNewAttraction() throws Exception {
+        TouristAttraction touristAttraction = new TouristAttraction("Hvidovrevej", "Et godt sted at starte", "Nørrebro", List.of(Tags.BØRNEVENLIG, Tags.KULTUR));
+        when(service.addTouristAttraction(any(TouristAttraction.class))).thenReturn(touristAttraction);
+
+        mockMvc.perform(post("/attractions/add")
+                .param("name", "Hvidovrevej")
+                .param("description", "Et godt sted at starte")
+                .param("location", "Nørrebro")
+                .param("tags", "BØRNEVENLIG")
+                .param("tags", "KULTUR"))
+                .andExpect(status().is3xxRedirection())
+                .andExpect(view().name("redirect:/attractions"));
+
+        ArgumentCaptor<TouristAttraction> captor = ArgumentCaptor.forClass((TouristAttraction.class));
+        verify(service).addTouristAttraction(captor.capture());
+
+        TouristAttraction captured = captor.getValue();
+        assertEquals("Hvidovrevej", captured.getName());
+        assertEquals("Et godt sted at starte", captured.getDescription());
+        assertEquals("Nørrebro", captured.getLocation());
+        assertNotNull(captured.getTags())
+
+
+
+
+
+        ;
+
+
+
+
     }
 
     @Test
