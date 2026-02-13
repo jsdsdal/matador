@@ -2,12 +2,14 @@ package com.example.matador.model;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class TouristAttraction {
     private String name;
     private String description;
     private String location;
     private List<Tags> tags = new ArrayList<>();
+
 
 //    private double price;
 
@@ -42,6 +44,19 @@ public class TouristAttraction {
 
     // fjern tag
     public void removeTags(Tags tag) { tags.remove(tag);}
+
+    @Override
+    public boolean equals(Object o) {
+        if (o == null || getClass() != o.getClass()) return false;
+        TouristAttraction that = (TouristAttraction) o;
+        return Objects.equals(name, that.name) && Objects.equals(description, that.description) && Objects.equals(location, that.location) && Objects.equals(tags, that.tags);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(name, description, location, tags);
+    }
+
 
     @Override
     public String toString() {
