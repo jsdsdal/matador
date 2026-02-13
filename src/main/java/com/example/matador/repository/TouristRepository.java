@@ -15,9 +15,13 @@ public class TouristRepository {
      * Tilføjer hardcoded turist attraktioner for test
      */
     public void populateTouristAttractions() {
-        touristAttractions.add(new TouristAttraction("Tivoli", "Forlystelsespark", "Nørrebrø", List.of(Tags.GRATIS)));
-        touristAttractions.add(new TouristAttraction("Den Lille Havfrue", "Seværdighed", "Nørrebrø", List.of(Tags.NATUR)));
-        touristAttractions.add(new TouristAttraction("Rundetårn", "Kulturarv", "Nørrebrø", List.of(Tags.BØRNEVENLIG, Tags.GRATIS)));
+        List<Tags> tags = new ArrayList<>();
+        tags.add(Tags.GRATIS);
+        tags.add(Tags.BØRNEVENLIG);
+        tags.add(Tags.KULTUR);
+        touristAttractions.add(new TouristAttraction("Tivoli", "Forlystelsespark", "Nørrebrø",tags));
+        touristAttractions.add(new TouristAttraction("Den Lille Havfrue", "Seværdighed", "Nørrebrø",tags));
+        touristAttractions.add(new TouristAttraction("Rundetårn", "Kulturarv", "Nørrebrø", tags));
     }
 
     public TouristRepository() {
@@ -48,9 +52,9 @@ public class TouristRepository {
     }
 
     // opdaterer beskrivelse
-    public void updateTouristAttractionDescription (TouristAttraction touristAttraction, String description) {
+    public void updateTouristAttractionDescription (TouristAttraction attraction, String description) {
         if (description != null) {
-            touristAttraction.setName(description);
+            attraction.setDescription(description);
         }
     }
 
@@ -87,12 +91,17 @@ public class TouristRepository {
     }
 
     /**
-     * Opretter en liste af vores eksisterende Tags
-     * og returnerer dem
-     * @return allEnums
+     * Tager et touristAttraction objekt som argument
+     * og bruger det til at finde et eksisterende turist objekt i vores repository.
+     * Derefter tager vi objektets index og gemmer værdien af det i en int.
+     * Derfra kalder vi set metoden og opdaterer objektet direkte in place.
+     * @param updatedTouristAttraction
      */
-    public List<Tags> getTags() {
-        List<Tags> allEnums = new ArrayList<>(EnumSet.allOf(Tags.class));
-        return allEnums;
+    public void update(TouristAttraction updatedTouristAttraction) {
+        TouristAttraction existingAttraction = getTouristAttractionByName(updatedTouristAttraction.getName());
+        if(existingAttraction != null) {
+            int index = this.touristAttractions.indexOf(existingAttraction);
+            this.touristAttractions.set(index, updatedTouristAttraction);
+        }
     }
 }

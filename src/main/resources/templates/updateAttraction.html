@@ -5,6 +5,26 @@
     <title>Title</title>
 </head>
 <body>
-
+<h1>Registrer ny turistattraktion</h1>
+<form th:action="@{/attractions/edit/{name}}" th:object="${attraction}" method="post">
+    <label>Navn</label>
+    <input type="text" th:field="*{name}" readonly>
+    <br>
+    <label>Beskrivelse</label>
+    <input type="text" th:field="*{description}">
+    <br>
+    <label>Lokation</label>
+    <input type="text" th:field="*{location}">
+    <br>
+    <div th:each="tag : ${allTags}">
+        <input type="checkbox"
+               th:field="*{tags}"
+               th:value="${tag}" />
+        <label th:text="${tag}"></label>
+        <br>
+    </div>
+    <br>
+    <button type="submit">Registrer</button>
+</form>
 </body>
 </html>
