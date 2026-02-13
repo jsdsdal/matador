@@ -51,13 +51,16 @@ public class TouristController {
     }
 
     @PostMapping("/attractions/delete/{name}")
-    public ResponseEntity<TouristAttraction> deleteByName(@PathVariable String name) {
-        TouristAttraction touristAttraction = service.deleteByName(name);
-        if (touristAttraction==null) {
-            return new ResponseEntity<>(touristAttraction, HttpStatus.NOT_FOUND);
-        } else {
-            return new ResponseEntity<>(touristAttraction, HttpStatus.OK);
-        }
+    public String deleteByName(@PathVariable String name) {
+        service.deleteByName(name);
+       return "redirect:/attractions";
+    }
+
+    @GetMapping("/attractions/getDelete/{name}")
+    public String getDeleteByName(@PathVariable("name") String attraction, Model model) {
+        TouristAttraction touristAttraction = service.getTouristAttractionByName(attraction);
+        model.addAttribute("attractionToDelete", touristAttraction);
+        return "confirmDelete";
     }
 
     @GetMapping("/attractions/edit/{name}")
