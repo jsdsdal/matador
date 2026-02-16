@@ -93,16 +93,31 @@ class TouristControllerTest {
         assertEquals("Hvidovrevej", captured.getName());
         assertEquals("Et godt sted at starte", captured.getDescription());
         assertEquals("Nørrebro", captured.getLocation());
-        assertNotNull(captured.getTags())
+        assertNotNull(captured.getTags());
 
+    }
 
+    @Test
+    void ShouldRegisterNewAttractionButWrongAsserts() throws Exception {
+        TouristAttraction touristAttraction = new TouristAttraction("Hvidovrevej", "Et godt sted at starte", "Nørrebro", List.of(Tags.BØRNEVENLIG, Tags.KULTUR));
+        when(service.addTouristAttraction(any(TouristAttraction.class))).thenReturn(touristAttraction);
 
+        mockMvc.perform(post("/attractions/add")
+                        .param("name", "Hvidovrevej")
+                        .param("description", "Et godt sted at starte")
+                        .param("location", "Nørrebro")
+                        .param("tags", "BØRNEVENLIG")
+                        .param("tags", "KULTUR"))
+                .andExpect(status().is3xxRedirection())
+                .andExpect(view().name("redirect:/attractions"));
 
+        ArgumentCaptor<TouristAttraction> captor = ArgumentCaptor.forClass((TouristAttraction.class));
+        verify(service).addTouristAttraction(captor.capture());
 
-        ;
-
-
-
+        TouristAttraction captured = captor.getValue();
+        assertNotEquals("", captured.getName());
+        assertNotEquals("Et sted at starte", captured.getDescription());
+        assertNotEquals("", captured.getLocation());
 
     }
 
@@ -111,7 +126,11 @@ class TouristControllerTest {
     }
 
     @Test
-    void deleteByName() {
+    void ShouldDeleteByName() {
+        TouristAttraction touristAttraction = new TouristAttraction("Hvidovrevej", "Et godt sted at starte", "Nørrebro", List.of(Tags.BØRNEVENLIG, Tags.KULTUR));
+        when(service.deleteByName())
+
+
     }
 
     @Test
