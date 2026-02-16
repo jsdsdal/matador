@@ -6,6 +6,9 @@
 
 Dette dokument giver en oversigt over det aktuelle projekt, "matador", i forhold til kravene specificeret i "Turistguide 2" (Web Frontend). Projektet er en Spring Boot-applikation designet til at levere en webbrugerflade for administration af turistattraktioner.
 
+## Github Build Status
+[![Java CI with Maven](https://github.com/jsdsdal/matador/actions/workflows/main-tests.yml/badge.svg)](https://github.com/jsdsdal/matador/actions/workflows/main-tests.yml)
+
 ## Overordnet status
 
 Projektet opfylder langt de fleste kernekrav for en web frontend baseret på HTML og Thymeleaf. Funktionalitet til visning, oprettelse, opdatering og sletning af turistattraktioner er implementeret, ligesom understøttelse af tags og lokationer. Der er en mindre uoverensstemmelse i projektnavnet og en delvis implementering af testkravene.
