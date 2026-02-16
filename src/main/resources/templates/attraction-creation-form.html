@@ -7,7 +7,7 @@
     <link href="/css/main.css" rel="stylesheet">
 </head>
 <body>
-
+<div th:insert="~{fragments :: header}"></div>
 <section>
     <form class="creation-form" th:action="@{/attractions/add}" th:object="${TouristAttraction}" method="post">
         <h1 class="form-title">Registrer ny turistattraktion</h1>
