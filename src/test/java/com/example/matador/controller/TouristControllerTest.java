@@ -63,7 +63,7 @@ class TouristControllerTest {
                 .andExpect(model().attribute("TouristAttraction", new TouristAttraction()))
                 .andExpect(model().attributeExists("TouristAttraction"))
                 .andExpect(model().attributeExists("allTags"))
-                .andExpect(model().attribute("allTags", tags))
+                .andExpect(model().attribute("no", tags)) //alltags
                 .andExpect(model().attributeExists("allLocations"));
         verify(service).getTags();
 
