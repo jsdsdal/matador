@@ -16,6 +16,7 @@ import org.springframework.test.web.servlet.MockMvc;
 import java.util.ArrayList;
 import java.util.List;
 
+import static org.hamcrest.Matchers.hasSize;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
@@ -73,6 +74,26 @@ class TouristControllerTest {
     }
 
     @Test
+    void getTagsForTouristAttraction() throws Exception{
+
+        TouristAttraction tivoli = new TouristAttraction("Tivoli", "Forlystelsespark",
+                "Nørrebrø", List.of(Tags.BØRNEVENLIG, Tags.GRATIS));
+
+        when(service.getTouristAttractionByName("Tivoli")).thenReturn(tivoli);
+
+        mockMvc.perform(get("/Tivoli/tags"))
+                .andExpect(status().isOk())
+                .andExpect(view().name("tags"))
+                .andExpect(model().attributeExists("tags"))
+                .andExpect(model().attributeExists("name"))
+                .andExpect(model().attribute("name", "Tivoli"))
+                .andExpect(model().attribute("tags", hasSize(2)))
+                .andExpect(model().attribute("tags",
+                        List.of(Tags.BØRNEVENLIG, Tags.GRATIS)));
+                verify(service).getTouristAttractionByName("Tivoli");
+      
+    }
+
     void ShouldRegisterNewAttraction() throws Exception {
         TouristAttraction touristAttraction = new TouristAttraction("Hvidovrevej", "Et godt sted at starte", "Nørrebro", List.of(Tags.BØRNEVENLIG, Tags.KULTUR));
         when(service.addTouristAttraction(any(TouristAttraction.class))).thenReturn(touristAttraction);
@@ -122,8 +143,10 @@ class TouristControllerTest {
     }
 
     @Test
-    void getTagsForTouristAttraction() {
+    void register() {
     }
+
+
 
     @Test
     void ShouldDeleteByName() {
