@@ -82,6 +82,7 @@ public class TouristRepository {
         return locations;
     }
 
+
     /**
      * Tager et touristAttraction objekt som argument
      * og bruger det til at finde et eksisterende turist objekt i vores repository.
