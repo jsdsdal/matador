@@ -58,9 +58,7 @@ class TouristControllerTest {
     @Test
     void showTouristAttractionCreationForm() throws Exception {
         List<Tags> tags = new ArrayList<>();
-
         when(service.getTags()).thenReturn(tags);
-
         mockMvc.perform(get("/attractions/add"))
                 .andExpect(status().isOk())
                 .andExpect(view().name("attraction-creation-form"))
@@ -72,7 +70,6 @@ class TouristControllerTest {
         verify(service).getTags();
 
     }
-
     @Test
     void getTagsForTouristAttraction() throws Exception{
 
