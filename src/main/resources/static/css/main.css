@@ -8,13 +8,12 @@
     --textblack: #2D1D1D;
 }
 
-body {
-    max-width: 500px;
-    margin: auto;
-    padding: 5px;
 
+
+body {
+    margin: 0;
+    padding: 0;
     background: var(--sitewhite);
-    color: var(--textblack);
     font-family: "Roboto Light", sans-serif;
 }
 
@@ -37,58 +36,88 @@ th {
     text-align: left;
 }
 
+/* Styles for attraction-creation-form.html */
 
-/* Kan vi gøre det her logo mindre! */
-/*
-.logo {
-    width: 4rem;
+.creation-form {
+    max-width: 800px;
+    /*margin: 40px auto */;
+    border-radius: 12px;
+    overflow: hidden;
 }
 
-.logo-title{
-    display: flex;
-    justify-content: space-between;
-
-}
-
-#nav-title {
-    text-decoration: none;
-
-}
-
-.navbar {
+.form-title {
     background-color: var(--moneygreen);
     color: var(--sitewhite);
+    margin: 0;
+    padding: 25px;
+    text-align: center;
+    font-size: 1.8rem;
+}
+
+.form-content {
+    background-color: var(--matadorred);
+    color: var(--sitewhite);
+    padding: 30px;
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Two equal columns */
+    gap: 40px;
+}
+
+/* Styling Inputs to look like the image */
+input[type="text"], select {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 15px;
+    border-radius: 12px;
+    border: none;
+    font-family: inherit;
+    display: block;
+}
+
+input[type="checkbox"] {
+    /* 1. Remove the default browser styling */
+    appearance: none;
+    -webkit-appearance: none;
+
+    /* 2. Create the circle shape */
+    width: 20px;
+    height: 20px;
+    border: 2px solid var(--sitewhite);
+    border-radius: 50%; /* This makes it round */
+
+    background-color: transparent;
+    cursor: pointer;
+    display: inline-grid;
+    place-content: center; /* Centers the dot inside */}
+
+/* 3. Style what happens when it is checked */
+input[type="checkbox"]:checked {
+    background-color: var(--moneygreen); /* Or keep it red and add a dot */
+    border-color: var(--sitewhite);
+}
+
+
+.tag-item {
+    margin-bottom: 8px;
     display: flex;
-    padding: 10px 10px;
-    margin: 0 auto;
-    justify-content: space-between;
     align-items: center;
 }
-.menu {
-    display: flex;
-    list-style-type: none;
-    color: var(--sitewhite);
-}
-.item a {
-    color: var(--sitewhite);
-    text-decoration: none;
-}
-.item :hover {
-    color: var(--skyblue);
-    transition: color 0.3s ease;
-}
-li {
-    margin: 0 15px;
+
+.tag-item input {
+    margin-right: 10px;
 }
 
-a {
-    text-decoration: none;
+.submit-btn {
+    background-color: var(--moneygreen);
+    color: white;
+    border: none;
+    padding: 15px 30px;
+    cursor: pointer;
+    font-weight: bold;
+    width: 100%;
 }
 
-select, input[type="text"], input[type="number"]{
-    width:200px;
-    box-sizing:border-box;
-}
+/* Styles for attraction-creation-form.html ends here */
 
- */
+
 

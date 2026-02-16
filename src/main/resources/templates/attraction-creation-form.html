@@ -4,38 +4,41 @@
     <meta charset="UTF-8">
     <title>Creation Form</title>
     <link th:href="@{/css/main.css}" rel="stylesheet">
+    <link href="/css/main.css" rel="stylesheet">
 </head>
 <body>
 
-<h1>Registrer ny turistattraktion</h1>
-<form action="#" th:action="@{/attractions/add}" th:object="${TouristAttraction}" method="post">
-    <label>Navn</label>
-    <input type="text" th:field="*{name}">
-    <br>
-    <label>Beskrivelse</label>
-    <input type="text" th:field="*{description}">
-    <br>
-    <label>Lokation</label>
-    <select th:field="*{location}">
-        <option value="">-- Vælg lokation --</option>
-        <option th:each="loc : ${allLocations}"
-                th:value="${loc}"
-                th:text="${loc}">
-        </option>
-    </select>
-    <br>
-    <div th:each="tag : ${allTags}">
-        <input type="checkbox"
-               th:field="*{tags}"
-               th:value="${tag}" />
-        <label th:text="${tag}"></label>
-        <br>
-    </div>
-    <br>
-    <button type="submit">Registrer</button>
+<section>
+    <form class="creation-form" th:action="@{/attractions/add}" th:object="${TouristAttraction}" method="post">
+        <h1 class="form-title">Registrer ny turistattraktion</h1>
 
+        <div class="form-content">
 
+            <div class="form-inputs">
+                <p>Indtast venligst</p>
 
-</form>
+                <input type="text" th:field="*{name}" placeholder="Navn" required>
+
+                <input type="text" th:field="*{description}" placeholder="Beskrivelse" required>
+
+                <p>Vælg venligst</p>
+                <select th:field="*{location}">
+                    <option value="">Lokation</option>
+                    <option th:each="loc : ${allLocations}" th:value="${loc}" th:text="${loc}" required></option>
+                </select>
+            </div>
+
+            <div class="form-tags">
+                <p>Tags</p>
+                <div class="tag-item" th:each="tag : ${allTags}">
+                    <input type="checkbox" th:field="*{tags}" th:value="${tag}"/>
+                    <label th:text="${tag}"></label>
+                </div>
+            </div>
+
+        </div>
+        <button type="submit" class="submit-btn">Registrer</button>
+    </form>
+</section>
 </body>
 </html>
