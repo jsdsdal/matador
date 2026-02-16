@@ -54,21 +54,18 @@ class TouristControllerTest {
     @Test
     void showTouristAttractionCreationForm() throws Exception {
         List<Tags> tags = new ArrayList<>();
-
         when(service.getTags()).thenReturn(tags);
-
         mockMvc.perform(get("/attractions/add"))
                 .andExpect(status().isOk())
                 .andExpect(view().name("attraction-creation-form"))
                 .andExpect(model().attribute("TouristAttraction", new TouristAttraction()))
                 .andExpect(model().attributeExists("TouristAttraction"))
                 .andExpect(model().attributeExists("allTags"))
-                .andExpect(model().attribute("yes", tags)) //alltags
+                .andExpect(model().attribute("allTags", tags))
                 .andExpect(model().attributeExists("allLocations"));
         verify(service).getTags();
 
     }
-
     @Test
     void register() {
     }
