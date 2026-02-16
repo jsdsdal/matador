@@ -58,20 +58,12 @@ public class TouristRepository {
         }
     }
 
-    // generic remove
-    public void removeTouristAttraction(TouristAttraction touristAttraction) { touristAttractions.remove(touristAttraction); }
-
     // remove by name
-    public TouristAttraction deleteByName(String name) {
-        TouristAttraction deletedAttraction = touristAttractions.get(0);
+    public void deleteByName(String name) {
+        TouristAttraction attractionToDelete = getTouristAttractionByName(name);
+        int index = this.touristAttractions.indexOf(attractionToDelete);
+        touristAttractions.remove(index);
 
-        for (TouristAttraction touristAttraction : touristAttractions) {
-            if (touristAttraction.getName() == name) {
-                deletedAttraction = touristAttraction;
-            }
-        }
-        removeTouristAttraction(deletedAttraction);
-        return deletedAttraction;
     }
 
 
