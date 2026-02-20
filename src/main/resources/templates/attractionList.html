@@ -19,9 +19,13 @@
         <td th:text="${t.getLocation()}"></td>
         <td th:text="${t.getTags()}"></td>
         <td><button><a th:href="@{/attractions/edit/{name}(name=${t.name})}">Opdater</a></button></td>
+        <td><button><a th:href="@{/attractions/getDelete/{name}(name=${t.name})}">Slet</a></button></td>
         <td><button><a th:href="@{/{name}/tags(name=${t.name})}">Tags</a></button></td>
     </tr>
 </table>
+
+<br>
+<button><a th:href="@{/attractions/add}">Tilføj attraktion</a></button>
 
 </body>
 </html>
