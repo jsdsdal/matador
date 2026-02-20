@@ -16,12 +16,35 @@ public class TouristRepository {
      */
     public void populateTouristAttractions() {
         List<Tags> tags = new ArrayList<>();
-        tags.add(Tags.GRATIS);
-        tags.add(Tags.BØRNEVENLIG);
-        tags.add(Tags.KULTUR);
-        touristAttractions.add(new TouristAttraction("Tivoli", "Forlystelsespark", "Nørrebrø",tags));
-        touristAttractions.add(new TouristAttraction("Den Lille Havfrue", "Seværdighed", "Nørrebrø",tags));
-        touristAttractions.add(new TouristAttraction("Rundetårn", "Kulturarv", "Nørrebrø", tags));
+//        tags.add(Tags.GRATIS);
+//        tags.add(Tags.BØRNEVENLIG);
+//        tags.add(Tags.KULTUR);
+//        touristAttractions.add(new TouristAttraction("Tivoli", "Forlystelsespark", "Nørrebrø",tags));
+//        touristAttractions.add(new TouristAttraction("Den Lille Havfrue", "Seværdighed", "Nørrebrø",tags));
+//        touristAttractions.add(new TouristAttraction("Rundetårn", "Kulturarv", "Nørrebrø", tags));
+
+        touristAttractions.add(new TouristAttraction(
+                "Toftegårds Bodega",
+                "Et af de sidste bastioner som endnu ikke er top gentrificeret. Dog siger rygtet at bartenderen" +
+                        " er ret ubehagelig",
+                "Valby Langgade",
+                List.of(Tags.KULTUR, Tags.INDENDØRS, Tags.KULTUR, Tags.UNDERHOLDNING)
+        ));
+
+        touristAttractions.add(new TouristAttraction(
+                "BT Kiosk",
+                "Ikonisk arkitektur med mange år på bagen. Køb en avis eller en dårlig kop kaffe",
+                "Trianglen",
+                List.of(Tags.KULTUR, Tags.TOILET)
+        ));
+
+        touristAttractions.add(new TouristAttraction(
+                "Tivoli",
+                "En klassiker udi morskab og spas - tag gerne lidt jyske dollars med",
+                "Bernstorffsvej",
+                List.of(Tags.KULTUR, Tags.RESTAURANT, Tags.BØRNEVENLIG, Tags.TOILET, Tags.UDENDØRS)
+        ));
+
     }
 
     public TouristRepository() {
