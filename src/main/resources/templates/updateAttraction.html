@@ -6,6 +6,7 @@
     <link th:href="@{/css/main.css}" rel="stylesheet">
 </head>
 <body>
+<div th:insert="~{fragments :: header}" class="nav-wrapper"></div>
 <h1>Registrer ny turistattraktion</h1>
 <form th:action="@{/attractions/edit/{name}}" th:object="${attraction}" method="post">
     <label>Navn</label>

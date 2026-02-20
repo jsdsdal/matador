@@ -6,6 +6,7 @@
     <link th:href="@{/css/main.css}" rel="stylesheet">
 </head>
 <body>
+<div th:insert="~{fragments :: header}" class="nav-wrapper"></div>
 <h1 th:text="${name}"></h1>
 <table>
     <tr th:each="t: ${tags}">

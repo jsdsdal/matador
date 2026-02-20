@@ -6,13 +6,13 @@
 <div th:fragment="header">
     <nav th:fragment="navbar" class="navbar">
         <div class="nav-container">
-            <a th:href="@{/static}" class="logo-link">
+            <a th:href="@{/attractions}" class="logo-link">
                 <img src="/matador-logo.png" alt="Matador Logo" class="logo">
             </a>
             <ul class="nav-menu">
-                <li><a th:href="@{/static}" class="active">Hjem</a></li>
-                <li><a th:href="@{/bestil}">Bestil Tur</a></li>
-                <li><a th:href="@{/faq}">FAQ</a></li>
+                <li><a th:href="@{/attractions}">Hjem</a></li>
+                <li><a href="https://www.rejseplanen.dk/">Bestil Tur</a></li>
+                <li><a th:href="@{/attractions}">FAQ</a></li>
             </ul>
         </div>
     </nav>
