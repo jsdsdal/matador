@@ -8,13 +8,15 @@
     --textblack: #2D1D1D;
 }
 
-body {
-    max-width: 500px;
-    margin: auto;
-    padding: 5px;
+*, *::before, *::after { box-sizing: border-box; }
 
+
+
+
+body {
+    margin: 0;
+    padding: 0;
     background: var(--sitewhite);
-    color: var(--textblack);
     font-family: "Roboto Light", sans-serif;
 }
 
@@ -22,73 +24,179 @@ h1 {
     font-family: "Roboto Light", sans-serif;
     font-size: 1.5em;
 }
+
+li, ul, a {
+    list-style-type: none;
+    text-decoration: none; /* Removes underline */
+    padding: 0;
+}
+
+a {
+    color: inherit;
+}
 label {
     width: 150px;
     display: inline-block;
 }
 
-table, th, td {
-    border: 2px solid black;
+table {
     border-collapse: collapse;
-    padding: 10px;
+    width: 100%;
 }
+th, td { border: 2px solid var(--textblack); padding: 10px; text-align: left; }
+td:last-child {
+    display: flex;
+    gap: 6px;
+    align-items: center;
+}
+
 
 th {
     text-align: left;
+    background-color: var(--bordeaux);
+    color: var(--sitewhite);
 }
 
+/* Styles for attraction-creation-form.html */
 
-/* Kan vi gøre det her logo mindre! */
-/*
-.logo {
-    width: 4rem;
+.creation-form {
+    max-width: 800px;
+    /*margin: 40px auto */;
+    border-radius: 12px;
+    overflow: hidden;
 }
 
-.logo-title{
-    display: flex;
-    justify-content: space-between;
-
-}
-
-#nav-title {
-    text-decoration: none;
-
-}
-
-.navbar {
+.form-title {
     background-color: var(--moneygreen);
     color: var(--sitewhite);
+    margin: 0;
+    padding: 25px;
+    text-align: center;
+    font-size: 1.8rem;
+}
+
+.form-content {
+    background-color: var(--matadorred);
+    color: var(--sitewhite);
+    padding: 30px;
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Two equal columns */
+    gap: 40px;
+}
+
+/* Styling Inputs to look like the image */
+input[type="text"], select {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 15px;
+    border-radius: 12px;
+    border: none;
+    font-family: inherit;
+    display: block;
+}
+
+input[type="checkbox"] {
+    /* 1. Remove the default browser styling */
+    appearance: none;
+    -webkit-appearance: none;
+
+    /* 2. Create the circle shape */
+    width: 20px;
+    height: 20px;
+    border: 2px solid var(--sitewhite);
+    border-radius: 50%; /* This makes it round */
+
+    background-color: transparent;
+    cursor: pointer;
+    display: inline-grid;
+    place-content: center; /* Centers the dot inside */}
+
+/* 3. Style what happens when it is checked */
+input[type="checkbox"]:checked {
+    background-color: var(--moneygreen); /* Or keep it red and add a dot */
+    border-color: var(--sitewhite);
+}
+
+
+.tag-item {
+    margin-bottom: 8px;
     display: flex;
-    padding: 10px 10px;
-    margin: 0 auto;
-    justify-content: space-between;
     align-items: center;
 }
-.menu {
+
+.tag-item input {
+    margin-right: 10px;
+}
+
+.submit-btn {
+    background-color: var(--moneygreen);
+    color: white;
+    border: none;
+    padding: 15px 30px;
+    cursor: pointer;
+    font-weight: bold;
+    width: 100%;
+}
+
+.btn {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+    color: var(--sitewhite);
+}
+
+.btn-red { background-color: var(--matadorred); }
+.btn-green { background-color: var(--moneygreen); }
+.btn-full { width: 100%; }
+
+/* Styles for attraction-creation-form.html ends here */
+
+
+/* START Styles for navbar START */
+
+.navbar {
+
+    background-color: var(--sitewhite);
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.logo {
+    max-width: 100px;
+}
+
+
+.nav-menu {
     display: flex;
-    list-style-type: none;
+    padding: 6px 14px;
+    justify-content: center;
+    gap: 8px;
+    text-decoration: none;
+    color: var(--textblack) !important;
+}
+
+.nav-menu a { padding: 6px 14px; border-radius: 8px; }
+
+
+.nav-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    align-items: center;
+    max-width: 100%;
+    margin: 0 auto;
+    padding: 10px 20px;
+}
+
+.nav-menu a:hover,
+.nav-menu a.active {
+    background-color: var(--matadorred);
     color: var(--sitewhite);
 }
-.item a {
-    color: var(--sitewhite);
-    text-decoration: none;
-}
-.item :hover {
-    color: var(--skyblue);
-    transition: color 0.3s ease;
-}
-li {
-    margin: 0 15px;
-}
 
-a {
-    text-decoration: none;
-}
+/* END Styles for navbar END*/
 
-select, input[type="text"], input[type="number"]{
-    width:200px;
-    box-sizing:border-box;
-}
-
- */
 

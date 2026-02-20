@@ -89,7 +89,7 @@ class TouristControllerTest {
                 verify(service).getTouristAttractionByName("Tivoli");
       
     }
-
+    @Test
     void ShouldRegisterNewAttraction() throws Exception {
         TouristAttraction touristAttraction = new TouristAttraction("Hvidovrevej", "Et godt sted at starte", "Nørrebro", List.of(Tags.BØRNEVENLIG, Tags.KULTUR));
         when(service.addTouristAttraction(any(TouristAttraction.class))).thenReturn(touristAttraction);

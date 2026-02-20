@@ -6,26 +6,35 @@
     <link th:href="@{/css/main.css}" rel="stylesheet">
 </head>
 <body>
+<div th:insert="~{fragments :: header}" class="nav-wrapper"></div>
 <h1>Turistattraktioner</h1>
 
 <table>
-    <tr th:if="${touristAttractions.isEmpty()}">Ingen registrerede Tourist Attraktioner</tr>
-    <tr th:unless="${touristAttractions.isEmpty()}">
-        <th>Navn</th> <th>Beskrivelse</th> <th>Lokation</th><th>Tags</th><th></th><th></th>
+    <thead>
+    <tr>
+        <th>Navn</th> <th>Beskrivelse</th> <th>Lokation</th><th>Tags</th><th>Handlinger</th>
+    </tr>
+    </thead>
+    <tbody>
+
+    <tr th:if="${touristAttractions.isEmpty()}">
+        <td colspan="4">Ingen registrerede turistattraktioner</td>
+    <tr>
     </tr>
     <tr th:each="t: ${touristAttractions}">
         <td th:text="${t.name}"></td>
         <td th:text="${t.description}"></td>
         <td th:text="${t.getLocation()}"></td>
         <td th:text="${t.getTags()}"></td>
-        <td><button><a th:href="@{/attractions/edit/{name}(name=${t.name})}">Opdater</a></button></td>
-        <td><button><a th:href="@{/attractions/getDelete/{name}(name=${t.name})}">Slet</a></button></td>
-        <td><button><a th:href="@{/{name}/tags(name=${t.name})}">Tags</a></button></td>
+        <td><a th:href="@{/attractions/edit/{name}(name=${t.name})}" class="btn btn-green">Opdater</a>
+            <a th:href="@{/attractions/getDelete/{name}(name=${t.name})}" class="btn btn-red">Slet</a>
+            <a th:href="@{/{name}/tags(name=${t.name})}" class="btn btn-green">Tags</a></td>
     </tr>
+    </tbody>
 </table>
 
 <br>
-<button><a th:href="@{/attractions/add}">Tilføj attraktion</a></button>
+<a th:href="@{/attractions/add}" class="btn btn-green">Tilføj attraktion</a>
 
 </body>
 </html>
