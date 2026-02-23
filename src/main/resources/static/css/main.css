@@ -15,7 +15,7 @@
 
 body {
     margin: 0;
-    padding: 0;
+    padding: 48px;
     background: var(--sitewhite);
     font-family: "Roboto Light", sans-serif;
 }
