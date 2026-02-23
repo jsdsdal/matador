@@ -61,7 +61,7 @@ th {
 
 .creation-form {
     max-width: 800px;
-    /*margin: 40px auto */;
+    margin: 40px auto;
     border-radius: 12px;
     overflow: hidden;
 }
