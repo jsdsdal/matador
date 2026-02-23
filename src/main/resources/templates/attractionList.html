@@ -6,7 +6,7 @@
     <link th:href="@{/css/main.css}" rel="stylesheet">
 </head>
 <body>
-<div th:insert="~{fragments :: header}" class="nav-wrapper"></div>
+<div th:insert="~{fragments :: header}"></div>
 <h1>Turistattraktioner</h1>
 
 <table>
@@ -34,7 +34,11 @@
 </table>
 
 <br>
+
 <a th:href="@{/attractions/add}" class="btn btn-green">Tilføj attraktion</a>
 
+
+
+<div th:insert="~{fragments :: footer}"></div>
 </body>
 </html>

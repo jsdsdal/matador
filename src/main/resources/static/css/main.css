@@ -197,6 +197,85 @@ input[type="checkbox"]:checked {
     color: var(--sitewhite);
 }
 
+
+.footer {
+    background-color: #3b1f1b; /* mørk brun */
+    color: white;
+    padding-top: 60px;
+    font-family: sans-serif;
+    margin-top: 50px; /* Juster px efter behov */
+    padding: 20px;    /* Indvendig afstand, hvis ønsket */
+}
+
+.footer-container {
+    text-align: center;
+    padding-bottom: 60px;
+}
+
+.footer-container h2 {
+    font-size: 32px;
+    margin-bottom: 10px;
+}
+
+.footer-container .undertitel {
+    color: #d3cfcf;
+    margin-bottom: 30px;
+}
+
+.newsletter {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.newsletter input {
+    width: 350px;
+    padding: 15px 20px;
+    border: none;
+    border-radius: 50px 0 0 50px;
+    outline: none;
+    font-size: 14px;
+}
+
+.newsletter button {
+    padding: 15px 30px;
+    border: none;
+    border-radius: 0 50px 50px 0;
+    background-color: #2f7a5e; /* grøn knap */
+    color: white;
+    cursor: pointer;
+    font-size: 14px;
+    transition: 0.3s ease;
+}
+
+.newsletter button:hover {
+    background-color: #25634c;
+}
+
+.footer-bottom {
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 25px 60px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 14px;
+}
+
+.footer-right a {
+    color: white;
+    text-decoration: none;
+    margin-left: 20px;
+    opacity: 0.8;
+    transition: 0.3s ease;
+}
+
+.footer-right a:hover {
+    opacity: 1;
+}
+
+.footer.padding{
+    padding-top: 100px;
+}
 /* END Styles for navbar END*/
 
 
