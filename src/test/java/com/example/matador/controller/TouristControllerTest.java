@@ -12,6 +12,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.webmvc.test.autoconfigure.WebMvcTest;
 import org.springframework.test.context.bean.override.mockito.MockitoBean;
 import org.springframework.test.web.servlet.MockMvc;
+
+import static org.hamcrest.Matchers.*;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 
 import java.util.ArrayList;
@@ -142,7 +144,26 @@ class TouristControllerTest {
 
 
     @Test
-    void ShouldDeleteByName() {
+    void ShouldDeleteByName() throws Exception {
+        mockMvc.perform(post("/attractions/delete/Tivoli"))
+                .andExpect(status().is3xxRedirection())
+                .andExpect(view().name("redirect:/attractions"));
+        verify(service).deleteByName("Tivoli");
+    }
+
+    @Test
+    void ShouldShowTouristAttractionToDelete() throws Exception {
+        TouristAttraction touristAttraction = new TouristAttraction("Hvidovrevej", "Et godt sted at starte", "Nørrebro", List.of(Tags.BØRNEVENLIG, Tags.KULTUR));
+        when(service.getTouristAttractionByName("Hvidovrevej")).thenReturn(touristAttraction);
+        mockMvc.perform(get("/attractions/getDelete/Hvidovrevej"))
+                .andExpect(status().isOk())
+                .andExpect(view().name("confirmDelete"))
+                .andExpect(model().attributeExists("attractionToDelete"))
+                .andExpect(model().attribute("attractionToDelete",
+                        hasProperty("name", is("Hvidovrevej"))));
+
+
+        verify(service).getTouristAttractionByName("Hvidovrevej");
     }
 
 

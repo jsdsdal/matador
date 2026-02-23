@@ -58,15 +58,15 @@ public class TouristController {
     }
 
     @GetMapping("/attractions/getDelete/{name}")
-    public String getDeleteByName(@PathVariable("name") String attraction, Model model) {
-        TouristAttraction touristAttraction = service.getTouristAttractionByName(attraction);
+    public String getDeleteByName(@PathVariable String name, Model model) {
+        TouristAttraction touristAttraction = service.getTouristAttractionByName(name);
         model.addAttribute("attractionToDelete", touristAttraction);
         return "confirmDelete";
     }
 
     @GetMapping("/attractions/edit/{name}")
-    public String getUpdateAttraction(@PathVariable("name") String attraction, Model model) {
-        TouristAttraction myAttraction = service.getTouristAttractionByName(attraction);
+    public String getUpdateAttraction(@PathVariable String name, Model model) {
+        TouristAttraction myAttraction = service.getTouristAttractionByName(name);
         model.addAttribute("attraction", myAttraction);
         model.addAttribute("allTags", service.getTags());
         return "updateAttraction";
