@@ -7,27 +7,38 @@
 </head>
 <body>
 <div th:insert="~{fragments :: header}" class="nav-wrapper"></div>
-<h1>Registrer ny turistattraktion</h1>
-<form th:action="@{/attractions/edit/{name}}" th:object="${attraction}" method="post">
-    <label>Navn</label>
-    <input type="text" th:field="*{name}" readonly>
-    <br>
-    <label>Beskrivelse</label>
-    <input type="text" th:field="*{description}">
-    <br>
-    <label>Lokation</label>
-    <input type="text" th:field="*{location}">
-    <br>
-    <div th:each="tag : ${allTags}">
-        <input type="checkbox"
-               th:field="*{tags}"
-               th:value="${tag}" />
-        <label th:text="${tag}"></label>
-        <br>
-    </div>
-    <br>
-    <button type="submit">Registrer</button>
-</form>
+<section>
+    <form class="creation-form" th:action="@{/attractions/edit/{name}}" th:object="${attraction}" method="post">
+
+        <h1 class="form-title">Opdater turistattraktion</h1>
+
+        <div class="form-content">
+            <div class="form-inputs">
+                <p>Indtast venligst</p>
+
+                <input type="text" th:field="*{name}" readonly placeholder="Navn" required>
+
+                <input type="text" th:field="*{description}" placeholder="Beskrivelse" required>
+
+                <p>Vælg venligst</p>
+                <select th:field="*{location}">
+                    <option th:field="*{location}"></option>
+                    <option th:each="loc : ${allLocations}" th:value="${loc}" th:text="${loc}" required></option>
+                </select>
+            </div>
+
+            <div class="form-tags">
+                <p>Tags</p>
+                <div class="tag-item" th:each="tag : ${allTags}">
+                    <input type="checkbox" th:field="*{tags}" th:value="${tag}"/>
+                    <label th:text="${tag}"></label>
+                </div>
+            </div>
+
+            <button type="submit" class="submit-btn">Registrer</button>
+    </form>
+
+</section>
 <div th:insert="~{fragments :: footer}"></div>
 </body>
 </html>
