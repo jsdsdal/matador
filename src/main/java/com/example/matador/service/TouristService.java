@@ -59,7 +59,8 @@ public class TouristService {
      * @return allEnums
      */
     public List<Tags> getTags() {
-        List<Tags> allEnums = new ArrayList<>(EnumSet.allOf(Tags.class));
+        List<Tags> allEnums;
+        allEnums = new ArrayList<>(EnumSet.allOf(Tags.class));
         return allEnums;
     }
 

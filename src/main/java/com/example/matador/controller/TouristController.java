@@ -3,13 +3,10 @@ package com.example.matador.controller;
 import com.example.matador.model.Tags;
 import com.example.matador.model.TouristAttraction;
 import com.example.matador.service.TouristService;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.Arrays;
 import java.util.List;
 @Controller
 public class TouristController {
@@ -20,10 +17,9 @@ public class TouristController {
     }
 
     @GetMapping("/")
-    public String getHome() {
-        return "redirect:/attractions";
+    public String home() {
+        return "index";
     }
-
 
     @GetMapping("/attractions")
     public String getAllAttractions(Model model) {

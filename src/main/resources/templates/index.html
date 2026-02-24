@@ -1,12 +1,27 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org" lang="da">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
-    <link rel="stylesheet" th:href="@{/css/main.css}" >
+    <title>Matador</title>
+    <link th:href="@{/css/main.css}" rel="stylesheet">
 </head>
 <body>
+
 <div th:insert="~{fragments :: header}" class="nav-wrapper"></div>
-<h1>THIS IS A TEST</h1>
+
+<section class="hero">
+    <div class="hero-box">
+        <h1>Oplev <br> København <br> med os</h1>
+        <p>Tag på en guidet matador-rundtur i byen</p>
+        <a th:href="@{/attractions}" class="cta-button">Udforsk</a>
+    </div>
+
+    <div class="hero-image">
+        <img src="/copenhagen.jpg" alt="København">
+    </div>
+</section>
+
+<div th:insert="~{fragments :: footer}"></div>
+
 </body>
 </html>
