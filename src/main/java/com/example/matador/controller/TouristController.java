@@ -2,6 +2,7 @@ package com.example.matador.controller;
 
 import com.example.matador.model.Tags;
 import com.example.matador.model.TouristAttraction;
+import com.example.matador.model.TouristAttractionOptions;
 import com.example.matador.service.TouristService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -15,8 +16,10 @@ import java.util.List;
 public class TouristController {
 
     private final TouristService service;
-    public TouristController(TouristService service) {
+    private final TouristAttractionOptions options;
+    public TouristController(TouristService service, TouristAttractionOptions options) {
         this.service = service;
+        this.options = options;
     }
 
     @GetMapping("/")
@@ -37,7 +40,7 @@ public class TouristController {
         TouristAttraction touristAttraction = new TouristAttraction();
         model.addAttribute("TouristAttraction", touristAttraction);
         model.addAttribute("allTags",service.getTags());
-        model.addAttribute("allLocations", service.getLocations());
+        model.addAttribute("allLocations", options.getTouristAttractionLocations());
         return "attraction-creation-form";
     }
 

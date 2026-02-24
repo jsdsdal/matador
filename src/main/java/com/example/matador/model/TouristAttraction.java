@@ -34,7 +34,7 @@ public class TouristAttraction {
     public void setTags(List<Tags> tags) {
         this.tags = tags;
     }
-
+/*
     // tilføj tag
     public void addTags(Tags tag) { tags.add(tag); }
 
@@ -44,7 +44,7 @@ public class TouristAttraction {
 
     // fjern tag
     public void removeTags(Tags tag) { tags.remove(tag);}
-
+*/
     @Override
     public boolean equals(Object o) {
         if (o == null || getClass() != o.getClass()) return false;

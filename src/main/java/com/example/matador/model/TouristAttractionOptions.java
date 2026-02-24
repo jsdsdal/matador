@@ -1,7 +1,10 @@
 package com.example.matador.model;
 
+import org.springframework.stereotype.Component;
+
 import java.util.*;
 
+@Component
 public class TouristAttractionOptions {
     private Map<String, String> touristAttractionLocations;
     private List<String> touristAttractionTags;
@@ -18,12 +21,20 @@ public class TouristAttractionOptions {
         ));
     }
 
-    public Map<String, String> getTouristAttractionLocations() {
+    public Map<String, String> getTouristAttractionLocationsAsMap() {
         return Collections.unmodifiableMap(touristAttractionLocations);
+    }
+
+    public List<String> getTouristAttractionLocations() {
+        return new ArrayList<>(touristAttractionLocations.keySet());
     }
 
     public List<String> getTouristAttractionTags() {
         return Collections.unmodifiableList(touristAttractionTags);
+    }
+
+    public String getHexColorByLocation(String location) {
+        return touristAttractionLocations.get(location);
     }
 
 }

@@ -96,6 +96,7 @@ public class TouristRepository {
      * listen.
      * @return <b>Locations</b>
      */
+
     public Set<String> getLocations() {
         Set<String> locations = new TreeSet<>();
         for (TouristAttraction element : touristAttractions) {
