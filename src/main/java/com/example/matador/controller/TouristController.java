@@ -74,6 +74,7 @@ public class TouristController {
         TouristAttraction myAttraction = service.getTouristAttractionByName(name);
         model.addAttribute("attraction", myAttraction);
         model.addAttribute("allTags", service.getTags());
+        model.addAttribute("allLocations", service.getLocations());
         return "updateAttraction";
     }
 
