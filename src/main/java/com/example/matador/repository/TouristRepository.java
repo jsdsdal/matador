@@ -1,9 +1,12 @@
 package com.example.matador.repository;
 
+import com.example.matador.controller.TouristController;
 import com.example.matador.model.Tags;
 import com.example.matador.model.TouristAttraction;
+import com.example.matador.testing.Student;
 import org.springframework.stereotype.Repository;
 
+import java.sql.*;
 import java.util.*;
 
 @Repository
@@ -120,4 +123,34 @@ public class TouristRepository {
             this.touristAttractions.set(index, updatedTouristAttraction);
         }
     }
+
+    public static void main(String[] args) throws SQLException {
+        openDB();
+    }
+
+    public static void openDB() throws SQLException {
+        try (Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/nelson?user=root&password=password")) {
+            String selectSql = "SELECT * FROM student;";
+
+            try (Statement stmt = con.createStatement()) {
+                List<Student> students = new ArrayList<>();
+                try (ResultSet resultSet = stmt.executeQuery(selectSql)) {
+                    while(resultSet.next()) {
+                        Student stud = new Student();
+                        stud.setStudentId(resultSet.getInt("student_id"));
+                        stud.setName(resultSet.getString("name"));
+                        stud.setMajor(resultSet.getString("major"));
+                        students.add(stud);
+                    }
+                    System.out.println(students);
+                }
+            }
+
+
+        }
+
+    }
+
+
+
 }
