@@ -180,4 +180,19 @@ class TouristControllerTest {
         verify(service).update(org.mockito.ArgumentMatchers.any(TouristAttraction.class));
     }
 
+    @Test
+    void ShouldShowTouristAttractionToDeleteTwo() throws Exception {
+        TouristAttraction touristAttraction = new TouristAttraction("Hvidovrevej", "Et godt sted at starte", "Nørrebro", List.of(Tags.BØRNEVENLIG, Tags.KULTUR));
+        when(service.getTouristAttractionByName("Hvidovre")).thenReturn(touristAttraction);
+        mockMvc.perform(get("/attractions/getDelete/Hvidovrevej"))
+                .andExpect(status().isOk())
+                .andExpect(view().name("confirmDelete"))
+                .andExpect(model().attributeExists("attractionToDelete"))
+                .andExpect(model().attribute("attractionToDelete",
+                        hasProperty("name", is("Hvidovrevej"))));
+
+
+        verify(service).getTouristAttractionByName("Hvidovrevej");
+    }
+
 }
