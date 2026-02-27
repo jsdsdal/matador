@@ -1,0 +1,6 @@
+spring.application.name=matador
+spring.datasource.url=
+spring.datasource.username= azure login
+spring.jpa.database-platform=org.hibernate.dialect.SQLServerDialect
+spring.jpa.hibernate.ddl-auto=update
+spring.jpa.properties.hibernate.default_schema=dbo
