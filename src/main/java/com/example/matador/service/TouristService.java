@@ -5,10 +5,8 @@ import com.example.matador.model.TouristAttraction;
 import com.example.matador.repository.TouristRepository;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-import java.util.EnumSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
+import java.util.stream.Collectors;
 
 @Service
 public class TouristService {
@@ -20,37 +18,38 @@ public class TouristService {
     }
 
     public List<TouristAttraction> getTouristAttractions(){
-        return repository.getTouristAttractions();
+        return repository.findAll();
 
     }
 
     public TouristAttraction getTouristAttractionByName(String name) {
-        return repository.getTouristAttractionByName(name);
+        return repository.findByNameIgnoreCase(name).orElse(null);
     }
 
     public TouristAttraction addTouristAttraction(TouristAttraction touristAttraction){
-        return repository.addTouristAttraction(touristAttraction);
+        return repository.save(touristAttraction);
     }
-
 
 
     public TouristAttraction updateTouristAttractionName(TouristAttraction touristAttraction, String name) {
-        repository.updateTouristAttractionName(touristAttraction, name);
-        return touristAttraction;
+        touristAttraction.setName(name);
+        return repository.save(touristAttraction);
     }
 
     public TouristAttraction updateTouristAttractionDescription(TouristAttraction touristAttraction, String description) {
-        repository.updateTouristAttractionDescription(touristAttraction, description);
-        return touristAttraction;
+        touristAttraction.setDescription(description);
+        return repository.save(touristAttraction);
+
     }
 
+
     public void deleteByName(String name){
-        repository.deleteByName(name);
+        repository.deleteByNameIgnoreCase(name);
     }
 
 
     public void update(TouristAttraction updatedTouristAttraction) {
-        repository.update(updatedTouristAttraction);
+        repository.save(updatedTouristAttraction);
     }
 
     /**
@@ -66,7 +65,7 @@ public class TouristService {
 
 
     public Set<String> getLocations() {
-        return repository.getLocations();
+        return repository.findAll().stream().map(TouristAttraction::getLocation).collect(Collectors.toCollection(TreeSet::new));
     }
 
 

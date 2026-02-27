@@ -22,12 +22,8 @@
                 <input type="text" th:field="*{description}" placeholder="Beskrivelse" required>
 
                 <p>Vælg venligst</p>
-                <select th:field="*{location}">
-                    <option value="">Lokation</option>
-                    <option th:each="loc : ${allLocations}" th:value="${loc}" th:text="${loc}" required></option>
-                </select>
+                <input type="text" th:field="*{location}" placeholder="Lokation">
             </div>
-
             <div class="form-tags">
                 <p>Tags</p>
                 <div class="tag-item" th:each="tag : ${allTags}">
@@ -35,7 +31,6 @@
                     <label th:text="${tag}"></label>
                 </div>
             </div>
-
         </div>
         <button type="submit" class="submit-btn">Registrer</button>
     </form>
