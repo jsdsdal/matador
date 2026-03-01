@@ -10,11 +10,11 @@
 
 <h1 th:text="'Vil du slette ' + ${attractionToDelete.name} + '?'"></h1>
 
-<form action="#" th:action="@{/attractions/delete/{name}(name=${attractionToDelete.name})}" th:object="${TouristAttraction}" method="post">
+<form action="#" th:action="@{/attractions/delete/{objectId}(objectId=${attractionToDelete.getAttractionId()})}" method="post">
   <button type="submit">Ja</button>
 </form>
 
-<td><button><a th:href="@{/attractions}">Nej</a></button></td>
+<a th:href="@{/attractions}">Nej</a>
 
 <div th:insert="~{fragments :: footer}"></div>
 

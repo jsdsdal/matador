@@ -43,31 +43,31 @@ public class TouristController {
         return "redirect:/attractions";
     }
 
-    @GetMapping("/{name}/tags")
-    public String getTagsForTouristAttraction(@PathVariable String name, Model model) {
-        TouristAttraction attraction = service.getTouristAttractionByName(name);
+    @GetMapping("/attractions/{objectId}/tags")
+    public String getTagsForTouristAttraction(@PathVariable int objectId, Model model) {
+        TouristAttraction attraction = service.findById(objectId);
         List<Tags> userTags = attraction.getTags();
-        model.addAttribute("name", name);
+        model.addAttribute("attraction", attraction);
         model.addAttribute("tags", userTags);
         return "tags";
     }
 
-    @PostMapping("/attractions/delete/{name}")
-    public String deleteByName(@PathVariable String name) {
-        service.deleteByName(name);
+    @PostMapping("/attractions/delete/{objectId}")
+    public String delete(@PathVariable int objectId) {
+        service.delete(objectId);
        return "redirect:/attractions";
     }
 
-    @GetMapping("/attractions/getDelete/{name}")
-    public String getDeleteByName(@PathVariable String name, Model model) {
-        TouristAttraction touristAttraction = service.getTouristAttractionByName(name);
+    @GetMapping("/attractions/getDelete/{objectId}")
+    public String getDeleteByName(@PathVariable int objectId, Model model) {
+        TouristAttraction touristAttraction = service.findById(objectId);
         model.addAttribute("attractionToDelete", touristAttraction);
         return "confirmDelete";
     }
 
-    @GetMapping("/attractions/edit/{name}")
-    public String getUpdateAttraction(@PathVariable String name, Model model) {
-        TouristAttraction myAttraction = service.getTouristAttractionByName(name);
+    @GetMapping("/attractions/edit/{objectId}")
+    public String getUpdateAttraction(@PathVariable int objectId, Model model) {
+        TouristAttraction myAttraction = service.findById(objectId);
         model.addAttribute("attraction", myAttraction);
         model.addAttribute("allTags", service.getTags());
         return "updateAttraction";

@@ -26,9 +26,9 @@
         <td th:text="${t.description}"></td>
         <td th:text="${t.getLocation()}"></td>
         <td th:text="${t.getTags()}"></td>
-        <td><a th:href="@{/{name}/tags(name=${t.name})}" class="btn btn-green">Tags</a>
-            <a th:href="@{/attractions/edit/{name}(name=${t.name})}" class="btn btn-yellow">Opdater</a>
-            <a th:href="@{/attractions/getDelete/{name}(name=${t.name})}" class="btn btn-red">Slet</a></td>
+        <td><a th:href="@{/attractions/{objectId}/tags(objectId=${t.getAttractionId()})}" class="btn btn-green">Tags</a>
+            <a th:href="@{/attractions/edit/{objectId}(objectId=${t.getAttractionId()})}" class="btn btn-yellow">Opdater</a>
+            <a th:href="@{/attractions/getDelete/{objectId}(objectId=${t.getAttractionId()})}" class="btn btn-red">Slet</a></td>
     </tr>
     </tbody>
 </table>

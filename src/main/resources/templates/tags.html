@@ -7,10 +7,10 @@
 </head>
 <body>
 <div th:insert="~{fragments :: header}" class="nav-wrapper"></div>
-<h1 th:text="${name}"></h1>
+<h1 th:text="${attraction}"></h1>
 <table>
     <tr th:each="t: ${tags}">
-        <td th:text="${t}"></td>
+        <td th:text="${t.toString()}"></td>
     </tr>
 
 </table>

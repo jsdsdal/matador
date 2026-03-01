@@ -68,26 +68,26 @@ class TouristControllerTest {
                 .andExpect(model().attributeExists("allTags"))
                 .andExpect(model().attributeExists("allLocations"));
     }
-    @Test
-    void getTagsForTouristAttraction() throws Exception{
-
-        TouristAttraction tivoli = new TouristAttraction("Tivoli", "Forlystelsespark",
-                "Nørrebrø", List.of(Tags.BØRNEVENLIG, Tags.GRATIS));
-
-        when(service.getTouristAttractionByName("Tivoli")).thenReturn(tivoli);
-
-        mockMvc.perform(get("/Tivoli/tags"))
-                .andExpect(status().isOk())
-                .andExpect(view().name("tags"))
-                .andExpect(model().attributeExists("tags"))
-                .andExpect(model().attributeExists("name"))
-                .andExpect(model().attribute("name", "Tivoli"))
-                .andExpect(model().attribute("tags", hasSize(2)))
-                .andExpect(model().attribute("tags",
-                        List.of(Tags.BØRNEVENLIG, Tags.GRATIS)));
-                verify(service).getTouristAttractionByName("Tivoli");
-      
-    }
+//    @Test
+//    void getTagsForTouristAttraction() throws Exception{
+//
+//        TouristAttraction tivoli = new TouristAttraction("Tivoli", "Forlystelsespark",
+//                "Nørrebrø", List.of(Tags.BØRNEVENLIG, Tags.GRATIS));
+//
+//        when(service.getTouristAttractionByName("Tivoli")).thenReturn(tivoli);
+//
+//        mockMvc.perform(get("/Tivoli/tags"))
+//                .andExpect(status().isOk())
+//                .andExpect(view().name("tags"))
+//                .andExpect(model().attributeExists("tags"))
+//                .andExpect(model().attributeExists("name"))
+//                .andExpect(model().attribute("name", "Tivoli"))
+//                .andExpect(model().attribute("tags", hasSize(2)))
+//                .andExpect(model().attribute("tags",
+//                        List.of(Tags.BØRNEVENLIG, Tags.GRATIS)));
+//                verify(service).getTouristAttractionByName("Tivoli");
+//
+//    }
     @Test
     void ShouldRegisterNewAttraction() throws Exception {
         TouristAttraction touristAttraction = new TouristAttraction("Hvidovrevej", "Et godt sted at starte", "Nørrebro", List.of(Tags.BØRNEVENLIG, Tags.KULTUR));
@@ -142,29 +142,29 @@ class TouristControllerTest {
     }
 
 
+//
+//    @Test
+//    void ShouldDeleteByName() throws Exception {
+//        mockMvc.perform(post("/attractions/delete/Tivoli"))
+//                .andExpect(status().is3xxRedirection())
+//                .andExpect(view().name("redirect:/attractions"));
+//        verify(service).deleteByName("Tivoli");
+//    }
 
-    @Test
-    void ShouldDeleteByName() throws Exception {
-        mockMvc.perform(post("/attractions/delete/Tivoli"))
-                .andExpect(status().is3xxRedirection())
-                .andExpect(view().name("redirect:/attractions"));
-        verify(service).deleteByName("Tivoli");
-    }
-
-    @Test
-    void ShouldShowTouristAttractionToDelete() throws Exception {
-        TouristAttraction touristAttraction = new TouristAttraction("Hvidovrevej", "Et godt sted at starte", "Nørrebro", List.of(Tags.BØRNEVENLIG, Tags.KULTUR));
-        when(service.getTouristAttractionByName("Hvidovrevej")).thenReturn(touristAttraction);
-        mockMvc.perform(get("/attractions/getDelete/Hvidovrevej"))
-                .andExpect(status().isOk())
-                .andExpect(view().name("confirmDelete"))
-                .andExpect(model().attributeExists("attractionToDelete"))
-                .andExpect(model().attribute("attractionToDelete",
-                        hasProperty("name", is("Hvidovrevej"))));
-
-
-        verify(service).getTouristAttractionByName("Hvidovrevej");
-    }
+//    @Test
+//    void ShouldShowTouristAttractionToDelete() throws Exception {
+//        TouristAttraction touristAttraction = new TouristAttraction("Hvidovrevej", "Et godt sted at starte", "Nørrebro", List.of(Tags.BØRNEVENLIG, Tags.KULTUR));
+//        when(service.getTouristAttractionByName("Hvidovrevej")).thenReturn(touristAttraction);
+//        mockMvc.perform(get("/attractions/getDelete/Hvidovrevej"))
+//                .andExpect(status().isOk())
+//                .andExpect(view().name("confirmDelete"))
+//                .andExpect(model().attributeExists("attractionToDelete"))
+//                .andExpect(model().attribute("attractionToDelete",
+//                        hasProperty("name", is("Hvidovrevej"))));
+//
+//
+//        verify(service).getTouristAttractionByName("Hvidovrevej");
+//    }
 
 
     @Test

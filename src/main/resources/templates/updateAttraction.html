@@ -8,7 +8,7 @@
 <body>
 <div th:insert="~{fragments :: header}" class="nav-wrapper"></div>
 <form class="creation-form"
-      th:action="@{/attractions/edit/{name}}"
+      th:action="@{/attractions/edit/{attraction}}"
       th:object="${attraction}"
       method="post">
 

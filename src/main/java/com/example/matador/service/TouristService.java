@@ -4,6 +4,7 @@ import com.example.matador.model.Tags;
 import com.example.matador.model.TouristAttraction;
 import com.example.matador.repository.TouristRepository;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.*;
 import java.util.stream.Collectors;
@@ -22,10 +23,11 @@ public class TouristService {
 
     }
 
-    public TouristAttraction getTouristAttractionByName(String name) {
-        return repository.findByNameIgnoreCase(name).orElse(null);
+    public TouristAttraction findById(int objectId) {
+        return repository.findById(objectId).orElse(null);
     }
 
+    @Transactional
     public TouristAttraction addTouristAttraction(TouristAttraction touristAttraction){
         return repository.save(touristAttraction);
     }
@@ -42,12 +44,12 @@ public class TouristService {
 
     }
 
-
-    public void deleteByName(String name){
-        repository.deleteByNameIgnoreCase(name);
+    @Transactional
+    public void delete(int objectId){
+        repository.deleteById(objectId);
     }
 
-
+    @Transactional
     public void update(TouristAttraction updatedTouristAttraction) {
         repository.save(updatedTouristAttraction);
     }
@@ -63,8 +65,7 @@ public class TouristService {
         return allEnums;
     }
 
-
-    public Set<String> getLocations() {
+        public Set<String> getLocations() {
         return repository.findAll().stream().map(TouristAttraction::getLocation).collect(Collectors.toCollection(TreeSet::new));
     }
 
